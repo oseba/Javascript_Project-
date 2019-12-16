@@ -1,0 +1,11 @@
+[
+{"id": 1 , "completed": false , "itemName":"lait" , "date": "2018-02-12"},
+{"id": 2 , "completed": false , "itemName":"cookies" , "date": "2018-04-12"},
+{"id": 3 , "completed": false , "itemName":"café" , "date": "2018-01-12"},
+{"id": 4 , "completed": false , "itemName":"céréales" , "date": "2018-01-12"},
+{"id": 5 , "completed": false , "itemName":"yaourt" , "date": "2018-07-12"},
+{"id": 6 , "completed": false , "itemName":"viande" , "date": "2018-21-12"},
+{"id": 7 , "completed": false , "itemName":"poulet" , "date": "2018-11-12"},
+{"id": 8 , "completed": false , "itemName":"sel" , "date": "2018-25-12"}
+
+  ]

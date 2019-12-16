@@ -1,0 +1,8 @@
+
+<span ng-class="{strike:item.completed}" >{{ item.itemName | uppercase}}</span>
+
+<button type="button" class="btn btn-danger btn-sm float-right" ng-click="removeItem(item)"><i class="fas fa-trash"></i></button>
+<a class="btn btn-primary btn-sm float-right" href="#!/addItem/edit/{{item.id}}" role="button" style="margin-right: 10px;"><i class="fas fa-pencil-ruler"></i></a>
+
+<button type="button" class="btn btn-success btn-sm float-left" ng-click="markCompleted(item)"><i class="far" ng-class="item.completed ? 'fa-check-circle' : 'fa-circle' "></i> </button>
+

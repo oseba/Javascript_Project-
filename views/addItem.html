@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8" >
+
+<div class="jumbotron text-center">
+
+    <h1> Ajout d'item</h1>
+</div>
+
+
+
+<form name="groceryForm">
+
+
+    <div class="alert alert-danger" role="alert" ng-show="groceryForm.$dirty && !groceryForm.$valid">
+
+        <p><i class="fas fa-exclamation-triangle"> </i> Erreur : veuillez saisir un nom correct ! </p>
+
+    </div>
+
+
+    <div class="form-group">
+            <input type="text" ng-pattern="/^[a-zA-Z]*$/" class="form-control" placeholder="Nouvel  élément" ng-model="groceryItem.itemName">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block"  role="button" ng-click="groceryForm.$valid && save()"><i class="fas fa-check"></i> Sauvegarder</button>
+    </div>
+
+    <div class="form-group">
+        <a class="btn btn-danger btn-lg btn-block" href="#!/ " role="button"><i class="fas fa-trash"></i> Annuler</a>
+
+    </div>
+</form>
+
+
+       <p>{{rp}}</p>
+
+
+
+
+
+
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
