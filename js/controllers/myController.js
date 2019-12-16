@@ -1,5 +1,40 @@
 angular.module("myControllerModule",[])
 
+
+
+    .controller("RoomsController",["$scope",function($scope){
+
+        $scope.appTitle = "Gestion des salles";
+
+        $scope.changer = function(){
+            $(function () {
+                $('#mamap').rwdImageMaps();
+                $('#mamap').maphilight({ fillColor: "0000FF",fillOpacity: 0.6 });
+
+
+            });
+
+
+        };
+        $scope.changer();
+
+
+
+
+    }])
+
+    .controller("RoomController",["$scope","$routeParams",function($scope,$routeParams){
+
+        $scope.appTitle = "Gestion des salles - "+$routeParams.name;
+
+
+
+
+
+
+    }]);
+
+/*
 .controller("HomeController",["$scope","GroceryService",function($scope,GroceryService){
 
             $scope.appTitle = " Liste des courses"
@@ -34,8 +69,8 @@ angular.module("myControllerModule",[])
 
 
     };
-
     $scope.changer();
+
     if(!$routeParams.id)
         {
 
@@ -79,8 +114,7 @@ angular.module("myControllerModule",[])
 
 
 
-
-
+*/
 
 /*
 

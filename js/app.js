@@ -7,24 +7,13 @@ var app = angular.module('tutorialApp',["ngRoute","myControllerModule"]);
 app.config(function ($routeProvider) {
 
     $routeProvider
-
-        .when("/main",{
-            templateUrl: "views/groceryList.html",
-            controller: "HomeController"
-        })
-
-        .when("/addItem",{
-            templateUrl: "views/addItem.html",
-            controller: "GroceryListeItemsController"
-        })
-
-        .when("/addItem/edit/:id",{
-            templateUrl: "views/addItem.html",
-            controller: "GroceryListeItemsController"
+        .when("/Salle/:name",{
+            templateUrl: "views/classe.html",
+            controller: "RoomController"
         })
         .when("/",{
             templateUrl: "views/classe.html",
-            controller: "GroceryListeItemsController"
+            controller: "RoomsController"
         })
         .otherwise({
 
@@ -32,7 +21,7 @@ app.config(function ($routeProvider) {
         });
 
 });
-
+/*
 
 app.service("GroceryService", function($http){
 
@@ -142,4 +131,4 @@ app.directive( "tbGroceryItem", function(){
         restrict: "E",
         templateUrl: "views/groceryItem.html"
     }
-});
+});*/
