@@ -2,9 +2,12 @@ angular.module("myControllerModule",[])
 
 
 
-    .controller("RoomsController",["$scope",function($scope){
+    .controller("RoomsController",["$scope","$rootScope",function($scope,$rootScope){
 
-        $scope.appTitle = "Gestion des salles";
+
+
+        $rootScope.appTitle= "Gestion des Salles";
+
 
         $scope.changer = function(){
             $(function () {
@@ -16,6 +19,8 @@ angular.module("myControllerModule",[])
 
 
         };
+
+
         $scope.changer();
 
 
@@ -23,16 +28,222 @@ angular.module("myControllerModule",[])
 
     }])
 
-    .controller("RoomController",["$scope","$routeParams",function($scope,$routeParams){
+    .controller("EtageController",["$scope","$routeParams","$rootScope",function($scope,$routeParams,$rootScope){
 
-        $scope.appTitle = "Gestion des salles - "+$routeParams.name;
+        $rootScope.appTitle= "Gestion des Salles - "+$routeParams.name;
+        $scope.nomSalle = $routeParams.name;
+        $scope.etage = $routeParams.etage;
+
+        $scope.changer = function(){
+            $(function () {
+                $('#etage').rwdImageMaps();
+                $('#etage').maphilight({ fillColor: "0000FF",fillOpacity: 0.6 });
+
+
+            });
+
+
+        };
+        $scope.changer();
+
+        $scope.show = function(salle){
+
+           // $('#staticBackdrop').modal('show');
+
+            console.log(salle);
+
+        };
+
+
+
+        $scope.salles = {};
+
+        $.ajax({
+            url : 'php/salles.php', // La ressource ciblée
+            type : 'GET', // Le type de la requête HTTP
+            dataType : 'json', // Le type de données à recevoir, ici, du HTML.
+            success : function(data){
+
+
+                $scope.salles = data;
+                $scope.$digest();
+                //console.log(" Tout s'est bien déroulé : " + $scope.salles );
+                //console.log("La data : "+data[0]["pseudo"]);
+
+                for(let i = 0; i < data.length; i++) {
+                    let salle = $scope.salles[i];
+
+                   //  console.log("num : "+salle.nom);
+                   // console.log("mot de passe : "+user.password);
+                }
+
+            },
+
+            error : function(resultat, statut, erreur){
+                console.log("Il y a eu une erreur" + erreur);
+            }
+        });
+
+
+
+    }])
+
+    .controller("RoomController",["$scope","$routeParams","$rootScope",function($scope,$routeParams,$rootScope){
+
+        $rootScope.appTitle= "Gestion des Salles - "+$routeParams.name;
+        $scope.nomSalle = $routeParams.name;
+
+
+     /*   $.ajax({
+            url : 'php/add.php', // La ressource ciblée
+            type : 'POST', // Le type de la requête HTTP
+            data:
+                {
+                    "pseudo" : "ya3tik saha !",
+                    "password" : "blablabla"
+                },
+
+            success : function(data){
+
+                console.log(" Tout s'est bien déroulé");
+                console.log("data : "+data);
+
+
+            },
+
+            error : function(resultat, statut, erreur){
+                console.log("Il y a eu une erreur" + erreur);
+            }
+        });*/
+/*
+        $.ajax({
+            url : 'php/sql.php', // La ressource ciblée
+            type : 'GET', // Le type de la requête HTTP
+            dataType : 'json', // Le type de données à recevoir, ici, du HTML.
+            success : function(data){
+
+                console.log(" Tout s'est bien déroulé");
+                console.log("La data : "+data[0]["pseudo"]);
+
+                for(let i = 0; i < data.length; i++) {
+                    let user = data[i];
+
+                    console.log("pseudo : "+user.pseudo);
+                    console.log("mot de passe : "+user.password);
+                }
+
+            },
+
+            error : function(resultat, statut, erreur){
+                console.log("Il y a eu une erreur" + erreur);
+            }
+        });*/
+
+
+    }])
+
+
+    .controller("HomeController",["$scope","$rootScope","User",function($scope,$rootScope,User){
+
+        $rootScope.appTitle= "Gestion des Salles";
+
+        $scope.loggedin = User.loggedin;
 
 
 
 
 
 
-    }]);
+    }])
+
+.controller("InscriptionController",["$scope","$rootScope",function($scope,$rootScope){
+
+    $rootScope.appTitle= "Inscription";
+
+    $scope.user = {};
+
+    $scope.user.pseudo = "";
+    $scope.user.password = "";
+
+    $scope.addUser = function()
+    {
+        console.log("Pseudo : "+$scope.user.pseudo);
+        console.log("Mdp : "+$scope.user.password);
+
+        $.ajax({
+            url : 'php/add.php', // La ressource ciblée
+            type : 'POST', // Le type de la requête HTTP
+            data:
+                {
+                    "pseudo" : $scope.user.pseudo,
+                    "password" : $scope.user.password
+                },
+
+            success : function(data){
+
+                console.log(" Tout s'est bien déroulé");
+                console.log("data : "+data);
+
+
+            },
+
+            error : function(resultat, statut, erreur){
+                console.log("Il y a eu une erreur" + erreur);
+            }
+        });
+
+    };
+
+}])
+
+.controller("ConnexionController",["$scope","$rootScope",function($scope,$rootScope){
+
+    $rootScope.appTitle= "Connexion";
+
+    $scope.user = {};
+
+    $scope.user.pseudo = "";
+    $scope.user.password = "";
+
+    $scope.login = function()
+    {
+        console.log("Pseudo : "+$scope.user.pseudo);
+        console.log("Mdp : "+$scope.user.password);
+
+        $.ajax({
+            url : 'php/login.php', // La ressource ciblée
+            type : 'POST', // Le type de la requête HTTP
+            data:
+                {
+                    "pseudo" : $scope.user.pseudo,
+                    "password" : $scope.user.password
+                },
+           // dataType: 'json',
+
+            success : function(data){
+
+
+             //  console.log("data : "+data+" dataType : "+typeof(data));
+
+                if(data == "true")
+                {
+                    console.log(" Connexion réussie");
+                }
+                else {
+                    console.log(" Erreur");
+                }
+
+
+            },
+
+            error : function(resultat, statut, erreur){
+                console.log("Il y a eu une erreur" + erreur);
+            }
+        });
+
+    };
+
+}]);
 
 /*
 .controller("HomeController",["$scope","GroceryService",function($scope,GroceryService){
@@ -116,32 +327,7 @@ angular.module("myControllerModule",[])
 
 */
 
-/*
 
-.factory("Calculations",function(){
-
-        let calculations = {};
-
-        let tab = [];
-
-        let res;
-
-
-        calculations.inverser = function(phrase)
-        {
-            for(let lettre in Array.from(phrase)){
-                tab.push(phrase[lettre]+"|");
-            }
-
-            res = tab.join('');
-            return res;
-
-        };
-
-        return calculations;
-
-
-});*/
 /*
 .directive("direBonjour", function(){
 

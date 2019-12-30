@@ -1,0 +1,103 @@
+<div class="row">
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+        <a class="btn btn-primary float-left" href="#!/Salle/{{nomSalle}}" role="button"><i class="fas fa-arrow-left"></i> Retour</a>
+        <div class="text-center"><h1>Bâtiment {{nomSalle}} - Etage {{etage}}</h1></div>
+
+
+<br>
+
+
+
+
+        <img src="/images/Salle_E_Rdc.png" alt="Bâtiment {{nomSalle}} - Etage {{etage}}" usemap="#workmap" id="etage" class="img-fluid">
+
+
+        <map name="workmap">
+
+            <area ng-repeat="salle in salles"  target="" alt="" title=""   coords="{{salle.zone}}" shape="{{salle.zonetype}}" ng-click="show(salle)">
+            <!--
+            <area target="" alt="" title=""   coords="42,44,188,45,188,266,134,238,128,170,37,164" shape="poly">
+            <area target="" alt="" title=""  coords="204,46,329,45,331,268,204,268" shape="poly">
+            <area target="" alt="" title=""   coords="347,46,508,270" shape="rect">
+            <area target="" alt="" title=""   coords="526,45,614,270" shape="rect">
+            <area target="" alt="" title=""   coords="633,46,724,270" shape="rect">
+            <area target="" alt="" title=""   coords="738,45,973,270" shape="rect">
+            <area target="" alt="" title=""   coords="884,378,1046,663" shape="rect">
+            <area target="" alt="" title=""   coords="703,379,866,661" shape="rect">
+            <area target="" alt="" title=""   coords="527,378,689,660" shape="rect">
+            <area target="" alt="" title=""   coords="349,377,508,661" shape="rect">
+            <area target="" alt="" title=""   coords="170,376,330,660" shape="rect">
+            <area target="" alt="" title=""  coords="130,371,154,374,155,663,38,661,32,429,128,429" shape="poly" ng-click="show()">-->
+        </map>
+
+
+        <br><br>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+            Launch static backdrop modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Bâtiment {{nomSalle}} - Etage {{etage}} - Salle - xxx</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped table-dark">
+                            <thead>
+
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Réservée : </td>
+                                <td>False</td>
+                            </tr>
+                            <tr>
+                                <td>Reservée par : </td>
+                                <td>Thornton</td>
+                            </tr>
+                            <tr>
+                                <td>Horaire d'ouverture</td>
+                                <td>the Bird</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--
+        <map name="workmap" >
+
+            <area shape="poly" coords="47,321,95,322,117,350,93,414,10,411" alt="Salles E" href="#!/Salle/E" >
+            <area shape="poly" coords="157,325,205,328,223,356,203,420,128,415" alt="Salles A" href="#!/Salle/A" >
+            <area shape="poly" coords="266,331,317,334,322,357,307,442,245,420" alt="Salles B" href="#!/Salle/B" >
+            <area shape="poly" coords="167,421,249,424,275,451,257,491,160,487" alt="Salles D" href="#!/Salle/D" >
+            <area shape="poly" coords="41,415,127,419,148,441,137,481,53,481,30,453" alt="Salles C" href="#!/Salle/C" >
+            <area shape="poly" coords="179,278,215,258,218,278,377,307,364,347,163,313" alt="Forum" href="#!/Salle/Forum" >
+            <area shape="poly" coords="318,132,307,92,387,3,410,11,418,42,486,59,487,77,416,170" alt="Etoile" href="#!/Salle/Etoile" >
+            <area shape="poly" coords="375,382,372,372,383,304,435,307,428,383" alt="Salles BL" href="#!/Salle/BL" >
+            <area shape="poly" coords="434,449,465,407,468,379,542,385,540,403,588,407,587,443,584,482,549,489,509,486,501,458,466,469" alt="Foyer" href="#!/Salle/Foyer" >
+            <area shape="poly" coords="811,313,851,222,886,237,876,259,952,291,935,345,899,331,903,311,873,300,858,333" alt="Salles F" href="#!/Salle/F" >
+            <area shape="poly" coords="1010,348,1023,278,1052,248,1111,271,1111,342,1091,334,1063,366" alt="Rits" href="#!/Salle/Rits" >
+            <area shape="circle" coords="164,240,45" alt="Nova" href="#!/Salle/Nova"  >
+
+        </map>-->
+
+    </div>
+    <div class="col-md-2"></div>
+
+
+</div>

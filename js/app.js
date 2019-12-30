@@ -8,12 +8,24 @@ app.config(function ($routeProvider) {
 
     $routeProvider
         .when("/Salle/:name",{
-            templateUrl: "views/classe.html",
+            templateUrl: "views/salle.html",
             controller: "RoomController"
         })
+        .when("/Salle/:name/:etage",{
+            templateUrl: "views/etage.html",
+            controller: "EtageController"
+        })
         .when("/",{
-            templateUrl: "views/classe.html",
+            templateUrl: "views/salles.html",
             controller: "RoomsController"
+        })
+        .when("/inscription",{
+            templateUrl: "views/inscription.html",
+            controller: "InscriptionController"
+        })
+        .when("/connexion",{
+            templateUrl: "views/connexion.html",
+            controller: "ConnexionController"
         })
         .otherwise({
 
@@ -21,8 +33,20 @@ app.config(function ($routeProvider) {
         });
 
 });
-/*
 
+
+app.service("User", function(){
+
+    let user = {};
+
+    user.pseudo =  "anonymous";
+    user.loggedin = false;
+
+
+
+    return user;
+});
+/*
 app.service("GroceryService", function($http){
 
     let groceryService = {};
@@ -122,8 +146,9 @@ app.service("GroceryService", function($http){
 
     };
     return groceryService;
-});
+});*/
 
+/*
 app.directive( "tbGroceryItem", function(){
 
     return{

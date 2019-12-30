@@ -19,9 +19,9 @@
 
 </head>
 
-<body ng-controller="RoomsController">
+<body ng-controller="HomeController">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><i class="fas fa-file-invoice" style="margin-right: 10px;"></i>{{ appTitle}}<span class="glyphicon glyphicon-search" aria-hidden="false"></span></a>
+    <a class="navbar-brand" href="#" id="atester"><i class="fas fa-file-invoice" style="margin-right: 10px;" ></i>{{ $root.appTitle}}<span class="glyphicon glyphicon-search" aria-hidden="false"></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,6 +33,16 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#">Acheter </a>
+            </li>
+            <li class="nav-item active" ng-if="!loggedin">
+                <a class="nav-link" href="#!/inscription">Inscription </a>
+            </li>
+            <li class="nav-item active" ng-if="!loggedin">
+                <a class="nav-link" href="#!/connexion">Connection </a>
+            </li>
+
+            <li class="nav-item active" ng-if="loggedin">
+                <a class="nav-link" href="#!/connexion">Mon Profil </a>
             </li>
         </ul>
 
