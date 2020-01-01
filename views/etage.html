@@ -17,7 +17,7 @@
 
         <map name="workmap">
 
-            <area ng-repeat="salle in salles"  target="" alt="" title=""   coords="{{salle.zone}}" shape="{{salle.zonetype}}" ng-click="show(salle)">
+            <area ng-repeat="salle in salles"  target="" alt="" title="" id="{{salle.id}}"  coords="{{salle.zone}}" shape="{{salle.zonetype}}" ng-click="show(salle)">
             <!--
             <area target="" alt="" title=""   coords="42,44,188,45,188,266,134,238,128,170,37,164" shape="poly">
             <area target="" alt="" title=""  coords="204,46,329,45,331,268,204,268" shape="poly">
@@ -45,7 +45,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Bâtiment {{nomSalle}} - Etage {{etage}} - Salle - xxx</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Salle {{salle.batiment}} {{salle.etage}}{{salle.nom}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -58,11 +58,13 @@
                             <tbody>
                             <tr>
                                 <td>Réservée : </td>
-                                <td>False</td>
+                                <td ng-if="salle.estReservee == 0">Non</td>
+                                <td ng-if="salle.estReservee == 1">Oui</td>
                             </tr>
                             <tr>
                                 <td>Reservée par : </td>
-                                <td>Thornton</td>
+                                <td ng-if="salle.reservateur == null">Personne</td>
+                                <td ng-if="salle.reservateur != null">{{salle.reservateur.pseudo}}</td>
                             </tr>
                             <tr>
                                 <td>Horaire d'ouverture</td>

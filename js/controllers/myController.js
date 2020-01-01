@@ -28,35 +28,72 @@ angular.module("myControllerModule",[])
 
     }])
 
-    .controller("EtageController",["$scope","$routeParams","$rootScope",function($scope,$routeParams,$rootScope){
+    .controller("EtageController",["$scope","$routeParams","$rootScope","$route",function($scope,$routeParams,$rootScope,$route){
 
         $rootScope.appTitle= "Gestion des Salles - "+$routeParams.name;
         $scope.nomSalle = $routeParams.name;
         $scope.etage = $routeParams.etage;
 
+        $scope.salles = {};
+        $scope.users = {};
+        $scope.salle = {};
+
+
         $scope.changer = function(){
             $(function () {
-                $('#etage').rwdImageMaps();
-                $('#etage').maphilight({ fillColor: "0000FF",fillOpacity: 0.6 });
 
+
+                $('#etage').rwdImageMaps();
+
+                $('#etage').maphilight({ fillColor: "00FF00",fillOpacity: 0.6 , alwaysOn:true});
+             //   $('#5').data('maphilight', {"fillColor":"FF0000","fillOpacity":0.6});
+                $('#etage').rwdImageMaps();
+            });
+
+
+        };
+        $scope.changerCouleurs =  function(){
+            $(function () {
+
+                console.log("changement en cours");
+                for (const salle in $scope.salles) {
+                   console.log($scope.salles[salle].id+" : "+$scope.salles[salle].estReservee);
+                    if($scope.salles[salle].estReservee == 1)
+                    $('#'+$scope.salles[salle].id).data('maphilight', {"fillColor":"FF0000","fillOpacity":0.6});
+                }
 
             });
 
 
         };
+
         $scope.changer();
 
         $scope.show = function(salle){
 
-           // $('#staticBackdrop').modal('show');
 
-            console.log(salle);
+            $scope.salle = salle;
+
+            for(let i=0;i < $scope.users.length; i++)
+            {
+               // console.log($scope.users[i]["pseudo"]);
+
+                if($scope.users[i]["id"] == $scope.salle.reservateur)
+                {
+                    $scope.salle.reservateur = $scope.users[i];
+                }
+
+            }
+
+            //console.log(salle);
+            //console.log($scope.salle);
+            $('#staticBackdrop').modal('show');
 
         };
 
 
 
-        $scope.salles = {};
+
 
         $.ajax({
             url : 'php/salles.php', // La ressource ciblée
@@ -67,15 +104,9 @@ angular.module("myControllerModule",[])
 
                 $scope.salles = data;
                 $scope.$digest();
-                //console.log(" Tout s'est bien déroulé : " + $scope.salles );
-                //console.log("La data : "+data[0]["pseudo"]);
+                $scope.changer();
+                $scope.changerCouleurs();
 
-                for(let i = 0; i < data.length; i++) {
-                    let salle = $scope.salles[i];
-
-                   //  console.log("num : "+salle.nom);
-                   // console.log("mot de passe : "+user.password);
-                }
 
             },
 
@@ -83,7 +114,23 @@ angular.module("myControllerModule",[])
                 console.log("Il y a eu une erreur" + erreur);
             }
         });
+        $.ajax({
+            url : 'php/users.php', // La ressource ciblée
+            type : 'GET', // Le type de la requête HTTP
+            dataType : 'json', // Le type de données à recevoir, ici, du HTML.
+            success : function(data){
 
+
+                $scope.users = data;
+                $scope.$digest();
+
+
+            },
+
+            error : function(resultat, statut, erreur){
+                console.log("Il y a eu une erreur" + erreur);
+            }
+        });
 
 
     }])
