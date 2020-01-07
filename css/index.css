@@ -14,7 +14,17 @@ html, body, section, .page {
   background: #374046;
   overflow: hidden;
 }
-
+/*///////////////////////////////*/
+header.page-header {
+    background: no-repeat left/cover url();
+    display: flex;
+    height: 120px;
+    min-width: 120px;
+    align-items: center;
+    color: #fff;
+    text-shadow: #000 0 0 .2em;
+}
+/*/////////////////////////////*/
 section {
   width:400%;
 }

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html ng-app="tutorialApp">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/fontawesome.min.css">
+<link rel="stylesheet" href="css/index2.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+
+<!-- Header -->
+  <title> Liste des courses </title>
+  <script src="lib/underscore.js"> </script>
+  <script src="lib/angular.min.js"> </script>
+  <script src="lib/angular-route.min.js"> </script>
+  <script src="js/app.js"></script>
+      <script src="js/jquery.js"></script>
+      <script src="js/controllers/myController.js"></script>
+      <script src="js/jquery.maphilight.js"></script>
+      <script src="js/jquery.rwdImageMaps.js"></script>
+
+      <header class="page-header">
+
+      </header>
+
+
+
+
+
+<body ng-controller="HomeController">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#" id="atester"><i class="fas fa-file-invoice" style="margin-right: 10px;" ></i>{{ $root.appTitle}}<span class="glyphicon glyphicon-search" aria-hidden="false"></span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Accueil </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Acheter </a>
+            </li>
+            <li class="nav-item active" ng-if="!loggedin">
+                <a class="nav-link" href="#!/inscription">Inscription </a>
+            </li>
+            <li class="nav-item active" ng-if="!loggedin">
+                <a class="nav-link" href="#!/connexion">Connection </a>
+            </li>
+
+            <li class="nav-item active" ng-if="loggedin">
+                <a class="nav-link" href="#!/connexion">Mon Profil </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+<br><br>
+    <div class="container">
+
+
+      <!-- First Grid -->
+      <div class="w3-row-padding w3-padding-64 w3-container">
+        <div class="w3-content">
+          <div class="w3-twothird">
+            <h1>Présentation du projet JAVASCRIPT</h1>
+            <h5 class="w3-padding-32">Objectif : Sujet : Un système de réservation de salles, amphi, stand d’événements  dans les différentes infrastructure du campus fiable, rapide pour les élèves et les professeurs.
+              Objectifs :
+              Créer une carte interactive qui permet de sélectionner les différents bâtiments du campus.
+              une fenêtre qui se trouve déjà sur les différents bâtiments pour indiquer combien de salles sont disponibles.
+              Lorsque l’on appuie sur un bâtiment, un “pop-up” s’ouvre et nous indique des informations:  salles disponibles et la durée de chaque réservation de chaque salle, l’identité de la personne qui a réservé. Nombre de places.
+              Indiquer l’horaire d’ouverture des salles (salles de TP, NOVA, FABLAB,RITZ,GYMNASE...)
+              Avoir les informations des clubs.
+              Créer une base de données (Faire le schéma relationnel)
+              Utiliser l’agenda pour connaître les disponibilités des salles.
+              Trouver un bon CSS
+              Ajouter une partie pour les concours
+              Ajouter les partenaires, ou les magasins les plus proches, mieux noté
+            </h5>
+
+            <p class="w3-text-grey">Notre équipe est constituée de .........</p>
+          </div>
+
+          <div class="w3-third w3-center">
+            <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Grid -->
+      <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+        <div class="w3-content">
+          <div class="w3-third w3-center">
+            <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+          </div>
+
+          <div class="w3-twothird">
+            <h1>EQUIPES</h1>
+            <h5 class="w3-pa1dding-32">Rapide, efficace </h5>
+
+            <p class="w3-text-grey">MEMBRES DE L'EQUIPE: CHAKIB FOULANI OMAR SEBA, URBINO AXEL </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+          <h1 class="w3-margin w3-xlarge">One Two Three VIVA L'ALGERIE</h1>
+      </div>
+
+
+
+      <script>
+      // Used to toggle the menu on small screens when clicking on the menu button
+      function myFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else {
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+      </script>
+
+      </body>
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+      <script src="js/bootstrap.min.js"></script>
+
+      <script src="js/bootstrap.bundle.js"></script>
+
+      <!-- Footer -->
+      <footer class="w3-container w3-padding-64 w3-center w3-opacity">
+        <div class="w3-xlarge w3-padding-32">
+          <i class="fa fa-facebook-official w3-hover-opacity"></i>
+          <i class="fa fa-instagram w3-hover-opacity"></i>
+          <i class="fa fa-snapchat w3-hover-opacity"></i>
+          <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+          <i class="fa fa-twitter w3-hover-opacity"></i>
+          <i class="fa fa-linkedin w3-hover-opacity"></i>
+       </div>
+       <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+      </footer>
+
+
+    </div>
+
+      </html>
